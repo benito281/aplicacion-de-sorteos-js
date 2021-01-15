@@ -56,3 +56,69 @@ document.querySelector("#numeros_sorteo").addEventListener("submit",function(e){
       
     console.log(min,max);
 });
+/* Posible para agregar a futuro no borrar */
+/* 
+function verificarExistencia(numero_sorteado){
+if (sorteo1.includes(numero_sorteado)) return true;
+return false;
+} */
+
+
+
+let alerta = document.getElementById("mostrar_sorteo");
+
+let sorteo1 = [];
+let sorteo2 = [];
+let sorteo3 = [];
+
+function numerosAleatorios(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+function longitudArray(array) {
+  if (array.length === 10) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function busqueda_repetido(array){
+  if (array) {
+    array.find(item=>{
+      if (item==item) {
+        return false;
+      }
+      else{
+        return true;
+      }
+    })
+  }
+}
+$("#numeros_sorteo").submit(function (e) {
+  e.preventDefault();
+
+  let minimo = document.getElementById("min").value;
+  let maximo = document.getElementById("max").value;
+
+  let min = parseInt(minimo);
+  let max = parseInt(maximo);
+
+  let numero_sorteado = numerosAleatorios(min, max);
+  let busqueda=busqueda_repetido(sorteo1);
+  if (isNaN(min) || isNaN(max)) {
+    console.log("El formulario no puede estar vacio");
+  } else {
+
+    if (sorteo1.length === 10) {
+      return false;
+    } else {
+      sorteo1.push(numero_sorteado);
+    }
+
+    console.log(sorteo1);
+  }
+});
+
+
+
+
