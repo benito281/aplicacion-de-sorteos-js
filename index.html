@@ -40,15 +40,31 @@
     <input type="text" id="max" class="form-control mb-4" placeholder="Ingrese valor maximo">
   </div>
   <!-- Valor maximo -->
+  <div class="form-group col-md-8 mx-auto">
+    <input type="text" id="cantidad" class="form-control mb-4" placeholder="Cantidad de numeros">
   </div>
 
+  </div>
+
+  
 
   <!-- Sign in button -->
-  <button class="btn btn-info btn-block" >Sortear</button>
+  <button class="btn btn-info btn-block" >Preparados</button>
 
 
 </form>
 <!-- Default form subscription -->
+<div class="mx-auto text-center mt-4 mb-4">
+  <button class="btn btn-info btn-lg" onclick="sorteo(sorteo1,sorteado1)">Comenzar Sorteo</button>
+</div>
+
+<div class="card my-4">
+  <div class="card-body">
+    <p class="card-title h1 text-center">Numeros Sorteados</p>
+    <div id="muestra_numero" class="text-center h2">
+    </div>
+  </div>
+</div>
 
 
     </div>
