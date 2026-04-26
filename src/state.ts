@@ -16,7 +16,7 @@ export let estadoActual: EstadoSorteo = {
 }
 export let vistaActual: VistaActual = "configuracion";
 
-// 1. Inicializar partida nueva
+// Inicializar partida nueva
 export function iniciarPartida(
     min: number,
     max: number,
@@ -40,16 +40,15 @@ export function iniciarPartida(
     });
 }
 
-// 2. Actualizar estado
+// Actualizar estado
 export function actualizarEstado(nuevoEstado: EstadoSorteo): void {
-    // reemplazá estadoActual
     estadoActual = nuevoEstado;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estadoActual));
     localStorage.setItem('vistaActual', vistaActual); 
 
 }
 
-// 3. Recuperar desde localStorage
+// Recuperar desde localStorage
 export function cargarDesdeStorage(): void {
     const guardado = localStorage.getItem(STORAGE_KEY);
     if (guardado) {

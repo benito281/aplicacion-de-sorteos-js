@@ -42,8 +42,6 @@ export function renderEstado(estado: EstadoSorteo): void {
   
   const total = estado.disponibles.length + estado.historial.length;
   contador.textContent = `${estado.historial.length} / ${total} sorteados`;
-  
-  // Agregamos clases de Tailwind al span (fondo gris, texto oscuro, bordes redondeados)
   historial.innerHTML = estado.historial
   .map(n => `<span class="bg-slate-100 border border-slate-200 text-slate-700 px-3 py-1 rounded-md text-sm font-semibold shadow-sm">${n}</span>`)
   .join('');
@@ -51,10 +49,7 @@ export function renderEstado(estado: EstadoSorteo): void {
 
 export function renderResumen(estado: EstadoSorteo): void {
   resumenTanda.textContent = `Tanda ${estado.tandaActual - 1} de ${estado.totalTandas}`;
-  
   const ultimaTanda = estado.historialTandas[estado.historialTandas.length - 1];
-  
-  // Fichas más grandes y coloridas para la vista de resumen
   resumenNumeros.innerHTML = ultimaTanda
       .map(n => `<span class="bg-indigo-100 text-indigo-800 border border-indigo-200 px-5 py-3 rounded-lg text-xl font-bold shadow-sm">${n}</span>`)
       .join('');

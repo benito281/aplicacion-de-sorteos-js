@@ -2,8 +2,8 @@
 export interface ConfiguracionSorteo {
   min: number;
   max: number;
-  numerosPorTanda: number;  // más claro que 'cantidad'
-  totalTandas: number;      // más claro que 'tandas'
+  numerosPorTanda: number;  
+  totalTandas: number;      
 }
 
 //Estructura para estado del sorteo

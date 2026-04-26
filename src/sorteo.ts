@@ -29,7 +29,6 @@ export function sacarNumero(estado: EstadoSorteo): EstadoSorteo {
   if (nuevaTandaEnCurso.length === estado.numerosPorTanda) {
     // Tanda completa
     return {
-      // completá vos los campos
       disponibles:     estado.disponibles.slice(1),
       historial:       [...estado.historial, numero],
       historialTandas: [...estado.historialTandas, nuevaTandaEnCurso],        

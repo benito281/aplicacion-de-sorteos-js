@@ -32,7 +32,7 @@ btnSortear.addEventListener("click", () => {
     actualizarEstado(estadoNuevo);
         if (estadoNuevo.tandaEnCurso.length === 0 && estadoNuevo.historialTandas.length > 0) {
         mostrarVista("resumen");
-        renderResumen(estadoNuevo); // ← importar de ui.ts
+        renderResumen(estadoNuevo);
     } else {
         renderEstado(estadoNuevo);
     }
