@@ -1,86 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Aplicación de sorteos con JavaScript</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/ico/f710cc7d8d250fdcddfd21df9fc1c284.png" type="image/x-icon">
-  <!-- Font Awesome -->
-   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"> 
-  <!-- Google Fonts Roboto -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css">
-  <!-- Your custom styles (optional) -->
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="./public/ico/f710cc7d8d250fdcddfd21df9fc1c284.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="src/style.css">
+  <title>bingo-app</title>
 </head>
-<body>
 
-  <main>
-    <div class="container">
+<body class="bg-slate-100 min-h-screen flex items-center justify-center p-4 font-sans text-slate-800">
 
-      <h1 class="text-center my-4 mb-4">Tu puedes ser el proximo ganador</h1>
-      <div class="display-1 font-weight-bold text-center" id="mostrar_sorteo" ></div>
+  <div id="vista-configuracion" class="vista w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <h1 class="text-2xl font-bold text-center text-indigo-600 mb-6">Configuración del Sorteo</h1>
+    
+    <div class="flex flex-col gap-4">
+      <div>
+        <label class="block text-sm font-medium text-slate-600 mb-1">Rango de números</label>
+        <div class="flex gap-2">
+          <input id="input-min" type="number" placeholder="Mínimo" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"/>
+          <input id="input-max" type="number" placeholder="Máximo" class="w-full border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"/>
+        </div>
+      </div>
 
-      <!-- Ingreso de valores -->
-<form class="text-center border border-light p-5 w-50 mx-auto" id="numeros_sorteo">
-  <p class="h4 mb-4">Ingrese el rango de numeros para el sorteo</p>
-  </p>
-  <div class="row">
-     <!-- Valor minimo -->
-    <div class="form-group col-md-6">
-      <input type="text" id="min" class="form-control mb-4" placeholder="Ingrese valor minimo">
-    </div>
-     
-  <div class="form-group col-md-6">
-    <input type="text" id="max" class="form-control mb-4" placeholder="Ingrese valor maximo">
-  </div>
-  <!-- Valor maximo -->
-  <div class="form-group col-md-8 mx-auto">
-    <input type="text" id="cantidad" class="form-control mb-4" placeholder="Cantidad de numeros">
-  </div>
-
-  </div>
-
-  
-
-  <!-- Sign in button -->
-  <button class="btn btn-info btn-block" >Preparados</button>
-
-
-</form>
-<!-- Default form subscription -->
-<div class="mx-auto text-center mt-4 mb-4">
-  <button class="btn btn-info btn-lg" onclick="sorteo(sorteo1,sorteado1)">Comenzar Sorteo</button>
-</div>
-
-<div class="card my-4">
-  <div class="card-body">
-    <p class="card-title h1 text-center">Numeros Sorteados</p>
-    <div id="muestra_numero" class="text-center h2">
+      <input id="input-cantidad" type="number" placeholder="Números por tanda" class="border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"/>
+      
+      <input id="input-tandas" type="number" placeholder="Cantidad de tandas" class="border border-slate-300 rounded-lg p-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"/>
+      
+      <button id="btn-comenzar" class="mt-4 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition-colors shadow-md hover:shadow-lg">
+        Comenzar Sorteo
+      </button>
     </div>
   </div>
-</div>
 
-
+  <div id="vista-resumen" class="vista oculta w-full max-w-lg bg-white rounded-2xl shadow-xl p-8 text-center">
+    <h2 id="resumen-tanda" class="text-3xl font-bold text-slate-700 mb-2"></h2>
+    <p class="text-slate-500 mb-6">Números sorteados en esta ronda</p>
+    
+    <div id="resumen-numeros" class="flex flex-wrap justify-center gap-3 mb-8">
+      </div>
+    
+    <div class="flex gap-3 justify-center">
+      <button id="btn-finalizar" class="px-6 py-2 rounded-lg font-semibold text-slate-600 bg-slate-200 hover:bg-slate-300 transition-colors">Finalizar sorteo</button>
+      <button id="btn-siguiente-tanda" class="px-6 py-2 rounded-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-md">Siguiente tanda</button>
     </div>
-  </main>
+  </div>
 
+  <div id="vista-evento" class="vista oculta w-full max-w-xl bg-white rounded-2xl shadow-xl p-8">
+    <div class="text-center mb-6">
+      <span id="contador" class="text-sm font-bold tracking-wider text-indigo-500 uppercase bg-indigo-50 px-3 py-1 rounded-full"></span>
+    </div>
 
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript" src="js/sorteo.js"></script>
+    <div class="flex flex-col items-center justify-center my-8">
+      <p class="text-slate-500 text-sm mb-2">Número Actual</p>
+      <div class="w-48 h-48 bg-indigo-600 rounded-full flex items-center justify-center shadow-inner border-4 border-indigo-100">
+        <div id="numero-actual" class="text-7xl font-black text-white drop-shadow-md"></div>
+      </div>
+    </div>
 
+    <div class="text-center mb-8">
+      <p class="text-slate-500 text-sm">Anterior: <span id="numero-anterior" class="font-bold text-slate-700 text-lg"></span></p>
+    </div>
+
+    <div class="border-t border-slate-200 pt-6 mb-6">
+      <h3 class="text-sm font-semibold text-slate-400 uppercase tracking-wide mb-3">Historial de la tanda</h3>
+      <div id="historial" class="flex flex-wrap gap-2">
+        </div>
+    </div>
+
+    <div class="flex gap-3">
+      <button id="btn-nueva-partida" class="w-1/3 border-2 border-slate-200 text-slate-600 font-semibold py-3 rounded-lg hover:bg-slate-50 transition-colors">Reiniciar</button>
+      <button id="btn-sortear" class="w-2/3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 rounded-lg transition-colors shadow-md hover:shadow-lg text-lg">
+        Sortear Siguiente
+      </button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>
