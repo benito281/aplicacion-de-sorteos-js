@@ -40,7 +40,7 @@ Necesitarás tener instalado [Node.js](https://nodejs.org/) (versión 16 o super
 
 1. **Clonar el repositorio**
    ```bash
-   git clone https://github.com/tu-usuario/bingo-app.git
+   git clone https://github.com/benito281/aplicacion-de-sorteos-js.git
    cd bingo-app
    ```
 
